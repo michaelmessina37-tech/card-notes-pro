@@ -7,242 +7,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy: #060d1c;
-      --navy2: #0b1628;
-      --navy3: #0f1e35;
-      --border: #1a2d4a;
-      --blue: #60aaff;
-      --text: #e8f2ff;
-      --text-dim: #7a9ab8;
-      --text-muted: #3a5878;
+      --navy: #060d1c; --navy2: #0b1628; --navy3: #0f1e35;
+      --border: #1a2d4a; --blue: #60aaff;
+      --text: #e8f2ff; --text-dim: #7a9ab8; --text-muted: #3a5878;
     }
-
-    body {
-      background: var(--navy);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.75;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(6,13,28,0.9);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 48px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
+    body { background: var(--navy); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.75; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(6,13,28,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 48px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
     .nav-logo span { color: var(--blue); }
-
-    .nav-back {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-family: 'DM Mono', monospace;
-      transition: color 0.15s;
-    }
+    .nav-back { font-size: 13px; color: var(--text-muted); text-decoration: none; font-family: 'DM Mono', monospace; transition: color 0.15s; }
     .nav-back:hover { color: var(--blue); }
-
-    .hero {
-      background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(96,170,255,0.1) 0%, transparent 70%);
-      padding: 64px 48px 48px;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--blue);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 14px;
-    }
-
-    .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .hero-meta {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-family: 'DM Mono', monospace;
-    }
-
-    .layout {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 56px 48px 96px;
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 56px;
-      align-items: start;
-    }
-
-    /* TOC sidebar */
-    .toc {
-      position: sticky;
-      top: 80px;
-    }
-
-    .toc-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      font-family: 'DM Mono', monospace;
-      margin-bottom: 12px;
-    }
-
+    .hero { background: radial-gradient(ellipse 70% 40% at 50% 0%, rgba(96,170,255,0.1) 0%, transparent 70%); padding: 64px 48px 48px; text-align: center; border-bottom: 1px solid var(--border); }
+    .hero-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 12px; }
+    .hero-meta { font-size: 13px; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+    .layout { max-width: 860px; margin: 0 auto; padding: 56px 48px 96px; display: grid; grid-template-columns: 220px 1fr; gap: 56px; align-items: start; }
+    .toc { position: sticky; top: 80px; }
+    .toc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-family: 'DM Mono', monospace; margin-bottom: 12px; }
     .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
-
-    .toc-list a {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-family: 'DM Mono', monospace;
-      padding: 4px 8px;
-      border-radius: 5px;
-      display: block;
-      transition: color 0.15s, background 0.15s;
-      line-height: 1.4;
-    }
-    .toc-list a:hover {
-      color: var(--blue);
-      background: rgba(96,170,255,0.06);
-    }
-
-    /* Content */
+    .toc-list a { font-size: 12px; color: var(--text-muted); text-decoration: none; font-family: 'DM Mono', monospace; padding: 4px 8px; border-radius: 5px; display: block; transition: color 0.15s, background 0.15s; line-height: 1.4; }
+    .toc-list a:hover { color: var(--blue); background: rgba(96,170,255,0.06); }
     .content { min-width: 0; }
-
-    .section {
-      margin-bottom: 48px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid var(--border);
-    }
+    .section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
     .section:last-child { border-bottom: none; margin-bottom: 0; }
-
-    h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    h2 .sec-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--blue);
-      background: rgba(96,170,255,0.1);
-      border: 1px solid rgba(96,170,255,0.2);
-      border-radius: 4px;
-      padding: 2px 7px;
-      font-weight: 400;
-    }
-
-    h3 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin: 24px 0 8px;
-    }
-
-    p {
-      color: var(--text-dim);
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
-
+    h2 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    h2 .sec-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--blue); background: rgba(96,170,255,0.1); border: 1px solid rgba(96,170,255,0.2); border-radius: 4px; padding: 2px 7px; font-weight: 400; }
+    h3 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); margin: 24px 0 8px; }
+    p { color: var(--text-dim); margin-bottom: 12px; font-size: 14px; }
     p:last-child { margin-bottom: 0; }
-
-    ul, ol {
-      color: var(--text-dim);
-      padding-left: 20px;
-      margin-bottom: 12px;
-      font-size: 14px;
-    }
-
+    ul, ol { color: var(--text-dim); padding-left: 20px; margin-bottom: 12px; font-size: 14px; }
     li { margin-bottom: 4px; }
-
-    a {
-      color: var(--blue);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(96,170,255,0.3);
-      transition: color 0.15s;
-    }
+    a { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,170,255,0.3); transition: color 0.15s; }
     a:hover { color: #90c8ff; }
-
     strong { color: var(--text); font-weight: 600; }
-    em { color: var(--text-dim); }
-
-    .callout {
-      background: var(--navy3);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--blue);
-      border-radius: 0 8px 8px 0;
-      padding: 14px 16px;
-      margin: 16px 0;
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
+    .callout { background: var(--navy3); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0; font-size: 13px; color: var(--text-dim); line-height: 1.6; }
     .callout strong { color: #90c8ff; }
-
-    .contact-box {
-      background: var(--navy2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px 24px;
-      margin-top: 16px;
-    }
+    .summary-box { background: var(--navy2); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+    .summary-box p { margin-bottom: 10px; font-size: 13px; }
+    .summary-box p:last-child { margin-bottom: 0; }
+    .contact-box { background: var(--navy2); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-top: 16px; }
     .contact-box p { margin-bottom: 6px; font-size: 14px; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px 48px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-muted);
-      font-family: 'DM Mono', monospace;
-    }
+    .data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    .data-table th { background: var(--navy3); border: 1px solid var(--border); padding: 10px 12px; text-align: left; font-weight: 600; color: var(--text); }
+    .data-table td { border: 1px solid var(--border); padding: 9px 12px; color: var(--text-dim); vertical-align: top; }
+    .data-table .no { color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 12px; }
+    footer { border-top: 1px solid var(--border); padding: 24px 48px; text-align: center; font-size: 12px; color: var(--text-muted); font-family: 'DM Mono', monospace; }
     footer a { color: var(--text-muted); border-bottom-color: transparent; }
     footer a:hover { color: var(--blue); }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .hero { padding: 48px 20px 32px; }
-      .layout { grid-template-columns: 1fr; padding: 40px 20px 64px; gap: 0; }
-      .toc { display: none; }
-      footer { padding: 20px; }
-    }
+    @media (max-width: 768px) { nav { padding: 0 20px; } .hero { padding: 48px 20px 32px; } .layout { grid-template-columns: 1fr; padding: 40px 20px 64px; gap: 0; } .toc { display: none; } footer { padding: 20px; } }
   </style>
 </head>
 <body>
@@ -255,156 +68,196 @@
 <div class="hero">
   <div class="hero-label">Legal</div>
   <h1>Privacy Policy</h1>
-  <div class="hero-meta">Last updated: April 14, 2026</div>
+  <div class="hero-meta">Last updated: April 15, 2026</div>
 </div>
 
 <div class="layout">
-
-  <!-- TOC -->
   <aside class="toc">
     <div class="toc-label">Contents</div>
     <ul class="toc-list">
+      <li><a href="#s0">Summary</a></li>
       <li><a href="#s1">1. What We Collect</a></li>
       <li><a href="#s2">2. How We Use It</a></li>
       <li><a href="#s3">3. Legal Bases</a></li>
       <li><a href="#s4">4. Who We Share With</a></li>
       <li><a href="#s5">5. Third-Party Sites</a></li>
-      <li><a href="#s6">6. Data Retention</a></li>
-      <li><a href="#s7">7. Security</a></li>
-      <li><a href="#s8">8. Children</a></li>
-      <li><a href="#s9">9. Your Rights</a></li>
-      <li><a href="#s10">10. Do Not Track</a></li>
-      <li><a href="#s11">11. US State Rights</a></li>
-      <li><a href="#s12">12. Policy Updates</a></li>
-      <li><a href="#s13">13. Contact Us</a></li>
+      <li><a href="#s6">6. Social Logins</a></li>
+      <li><a href="#s7">7. Data Retention</a></li>
+      <li><a href="#s8">8. Security</a></li>
+      <li><a href="#s9">9. Children</a></li>
+      <li><a href="#s10">10. Your Rights</a></li>
+      <li><a href="#s11">11. Do Not Track</a></li>
+      <li><a href="#s12">12. US State Rights</a></li>
+      <li><a href="#s13">13. Policy Updates</a></li>
+      <li><a href="#s14">14. Contact Us</a></li>
+      <li><a href="#s15">15. Review / Delete Data</a></li>
     </ul>
   </aside>
 
-  <!-- Content -->
   <main class="content">
 
     <div class="section">
-      <p>This Privacy Notice for <strong>Card Notes Pro</strong> ("we," "us," or "our") describes how and why we might access, collect, store, use, and share your personal information when you use our services, including when you visit <a href="https://cardnotespro.com">cardnotespro.com</a> or use our Chrome extension.</p>
-      <div class="callout">
-        <strong>Questions or concerns?</strong> Contact us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>. If you do not agree with our policies and practices, please do not use our services.
+      <p>This Privacy Notice for <strong>Card Notes Pro</strong> ("we," "us," or "our") describes how and why we might access, collect, store, use, and share ("process") your personal information when you use our services, including when you visit <a href="https://cardnotespro.com">cardnotespro.com</a> or engage with us in other related ways.</p>
+      <div class="callout"><strong>Questions or concerns?</strong> Contact us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>. If you do not agree with our policies, please do not use our Services.</div>
+    </div>
+
+    <div class="section" id="s0">
+      <h2>Summary of Key Points</h2>
+      <div class="summary-box">
+        <p><strong>What personal information do we process?</strong> When you visit or use our Services, we may process personal information depending on how you interact with us and the features you use.</p>
+        <p><strong>Do we process any sensitive personal information?</strong> We do not process sensitive personal information.</p>
+        <p><strong>Do we collect any information from third parties?</strong> We do not collect any information from third parties.</p>
+        <p><strong>How do we process your information?</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</p>
+        <p><strong>In what situations and with which parties do we share personal information?</strong> We may share information in specific situations with specific third parties. See section 4.</p>
+        <p><strong>How do we keep your information safe?</strong> We have organizational and technical processes in place to protect your personal information, though no system is 100% secure.</p>
+        <p><strong>What are your rights?</strong> Depending on where you are located, you may have certain rights regarding your personal information. See section 10.</p>
+        <p><strong>How do you exercise your rights?</strong> Email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a> or submit a data subject access request.</p>
       </div>
     </div>
 
     <div class="section" id="s1">
       <h2><span class="sec-num">01</span> What Information Do We Collect?</h2>
-      <h3>Personal information you provide</h3>
-      <p>We collect personal information that you voluntarily provide when you express interest in our products or contact us. This includes your email address when you purchase a subscription through Whop.</p>
-      <h3>Information collected automatically</h3>
-      <p>When you use our Chrome extension, we store your listing notes, star ratings, and custom tags in your browser's local storage and optionally in Firebase cloud storage. This data belongs to you and is tied to an anonymous user ID generated on first install — not to your personal identity.</p>
+      <h3>Personal information you disclose to us</h3>
+      <p>We collect personal information that you voluntarily provide when you register on the Services, express interest in our products, participate in activities, or contact us. The personal information we collect may include:</p>
+      <ul>
+        <li>Email addresses</li>
+        <li>Passwords (handled securely via Firebase Authentication — we never see your plain-text password)</li>
+      </ul>
       <h3>Sensitive information</h3>
-      <p>We do not process sensitive personal information such as racial or ethnic origins, sexual orientation, or religious beliefs.</p>
-      <h3>Third-party data</h3>
-      <p>We do not collect any information from third parties beyond what is necessary to process your subscription via Whop.</p>
+      <p>We do not process sensitive information.</p>
+      <h3>Social media login data</h3>
+      <p>We may provide you with the option to register using your existing social media account details. If you choose to register this way, we will collect certain profile information from that provider, as described in section 6 below.</p>
+      <p>All personal information you provide must be true, complete, and accurate, and you must notify us of any changes.</p>
     </div>
 
     <div class="section" id="s2">
       <h2><span class="sec-num">02</span> How Do We Process Your Information?</h2>
-      <p>We process your information to:</p>
+      <p><em><strong>In Short:</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</em></p>
+      <p>We process your personal information for the following purposes:</p>
       <ul>
-        <li>Provide, operate, and improve the Card Notes Pro extension and website</li>
-        <li>Sync your notes and ratings across devices via Firebase cloud storage</li>
-        <li>Verify active subscriptions through the Whop API</li>
-        <li>Respond to your support requests and inquiries</li>
-        <li>Comply with applicable legal obligations</li>
+        <li><strong>Account creation and authentication.</strong> We process your information so you can create and log into your account and keep it in working order.</li>
+        <li><strong>Cross-device data sync.</strong> Your notes, ratings, and tags are stored in Firebase Firestore under your unique account ID so they are accessible from any device you sign into.</li>
+        <li><strong>Support requests.</strong> We may use your email to respond to questions or issues you contact us about.</li>
+        <li><strong>Legal compliance.</strong> We process information as required by applicable law.</li>
       </ul>
-      <p>We process your information only when we have a valid legal reason to do so.</p>
     </div>
 
     <div class="section" id="s3">
       <h2><span class="sec-num">03</span> What Legal Bases Do We Rely On?</h2>
-      <p>We process your personal information only when it is necessary and we have a valid legal basis, including:</p>
-      <ul>
-        <li><strong>Consent</strong> — where you have given explicit permission, such as agreeing to our terms when purchasing a subscription</li>
-        <li><strong>Contract performance</strong> — to deliver the services you have paid for</li>
-        <li><strong>Legitimate interests</strong> — to improve our product and prevent fraud, provided those interests do not override your rights</li>
-        <li><strong>Legal obligations</strong> — where required by applicable law</li>
-      </ul>
-      <p>If you are located in Canada, you may withdraw your consent at any time by contacting us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>.</p>
+      <p><em><strong>In Short:</strong> We only process your personal information when we have a valid legal reason to do so.</em></p>
+      <p>Legal bases we rely on include your <strong>consent</strong> (where you agree to our terms when creating an account), <strong>contract performance</strong> (to deliver the service you signed up for), <strong>legitimate interests</strong> (to improve our product and prevent fraud), and <strong>legal obligations</strong> (where required by law).</p>
+      <p>If you are located in Canada, we may also process your information in exceptional circumstances permitted by applicable law — including for fraud detection, business transactions, compliance with court orders, or where the information is publicly available as specified by regulations.</p>
     </div>
 
     <div class="section" id="s4">
       <h2><span class="sec-num">04</span> When and With Whom Do We Share Your Information?</h2>
-      <p>We do not sell your personal information. We may share information in the following limited circumstances:</p>
+      <p><em><strong>In Short:</strong> We may share information in specific situations with specific third parties.</em></p>
       <ul>
-        <li><strong>Whop</strong> — our subscription and payment processor. When you purchase a subscription, Whop handles payment processing and license key generation.</li>
-        <li><strong>Google Firebase</strong> — used to sync your notes and ratings across devices. Only your anonymous user ID and your listing data (notes, ratings, tags) are stored.</li>
-        <li><strong>Business transfers</strong> — in connection with any merger, sale, or acquisition of all or part of our business.</li>
+        <li><strong>Google Firebase.</strong> We use Firebase Authentication and Firestore to manage accounts and store notes, ratings, and tags. Your data is stored under your unique user ID and is not accessible to other users.</li>
+        <li><strong>Business transfers.</strong> We may share or transfer your information in connection with any merger, sale of company assets, financing, or acquisition of all or a portion of our business.</li>
       </ul>
-      <p>We have not disclosed, sold, or shared any personal information to third parties for commercial purposes in the past 12 months, and we do not intend to in the future.</p>
+      <p>We have not disclosed, sold, or shared any personal information to third parties for a business or commercial purpose in the past 12 months, and we do not intend to do so in the future.</p>
     </div>
 
     <div class="section" id="s5">
-      <h2><span class="sec-num">05</span> Third-Party Websites</h2>
-      <p>Our website and extension may link to third-party websites such as eBay, Whop, and others. We are not responsible for the privacy practices of those sites. Any data you provide to third-party sites is governed by their own privacy policies. We recommend reviewing their policies before providing any personal information.</p>
+      <h2><span class="sec-num">05</span> What Is Our Stance on Third-Party Websites?</h2>
+      <p><em><strong>In Short:</strong> We are not responsible for the safety of any information that you share with third parties that we may link to.</em></p>
+      <p>Our Services may link to third-party websites such as eBay. We are not responsible for the privacy practices of those sites. Any data you provide to third-party sites is governed by their own privacy policies. The inclusion of a link does not imply an endorsement by us. We recommend reviewing the policies of any third party before providing personal information.</p>
     </div>
 
     <div class="section" id="s6">
-      <h2><span class="sec-num">06</span> How Long Do We Keep Your Information?</h2>
-      <p>We retain your personal information only as long as necessary to provide our services and fulfill the purposes outlined in this notice, unless a longer retention period is required by law.</p>
-      <p>Your notes, ratings, and tags stored in Firebase are retained as long as your account is active. You may delete your data at any time by contacting us. When we have no ongoing legitimate business need to process your information, we will delete or anonymize it.</p>
+      <h2><span class="sec-num">06</span> How Do We Handle Your Social Logins?</h2>
+      <p><em><strong>In Short:</strong> If you choose to register or log in using a social media account, we may have access to certain information about you.</em></p>
+      <p>Our Services offer you the ability to register and log in using third-party social media account details. Where you choose to do this, we will receive certain profile information about you from your social media provider — often including your name, email address, and profile picture.</p>
+      <p>We will use the information we receive only for the purposes described in this Privacy Notice. We do not control, and are not responsible for, other uses of your personal information by your third-party social media provider. We recommend that you review their privacy notice to understand how they collect, use, and share your personal information.</p>
     </div>
 
     <div class="section" id="s7">
-      <h2><span class="sec-num">07</span> How Do We Keep Your Information Safe?</h2>
-      <p>We implement appropriate technical and organizational security measures to protect your personal information. Your notes data is stored in Google Firebase, which provides industry-standard security including encryption at rest and in transit.</p>
-      <p>However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure. While we do our best to protect your information, transmission of personal information to and from our services is at your own risk.</p>
+      <h2><span class="sec-num">07</span> How Long Do We Keep Your Information?</h2>
+      <p><em><strong>In Short:</strong> We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.</em></p>
+      <p>We will only keep your personal information for as long as necessary for the purposes set out in this notice, unless a longer retention period is required by law. Your notes, ratings, and tags stored in Firebase are retained as long as your account is active.</p>
+      <p>When we have no ongoing legitimate business need to process your personal information, we will delete or anonymize it. You may request deletion of your account and data at any time by contacting us.</p>
     </div>
 
     <div class="section" id="s8">
-      <h2><span class="sec-num">08</span> Do We Collect Information From Minors?</h2>
-      <p>We do not knowingly collect data from or market to children under 18 years of age. By using our services, you represent that you are at least 18 years old. If we learn that personal information from users under 18 has been collected, we will take reasonable measures to promptly delete such data.</p>
-      <p>If you believe we may have collected information from a minor, please contact us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>.</p>
+      <h2><span class="sec-num">08</span> How Do We Keep Your Information Safe?</h2>
+      <p><em><strong>In Short:</strong> We aim to protect your personal information through organizational and technical security measures.</em></p>
+      <p>We have implemented appropriate technical and organizational security measures to protect the security of any personal information we process. Your data is stored in Google Firebase, which provides industry-standard security including encryption at rest and in transit. Your password is never stored in plain text — Firebase Authentication handles all credential management securely.</p>
+      <p>However, no electronic transmission over the Internet can be guaranteed to be 100% secure. While we do our best to protect your information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.</p>
     </div>
 
     <div class="section" id="s9">
-      <h2><span class="sec-num">09</span> What Are Your Privacy Rights?</h2>
-      <p>Depending on where you are located, you may have the following rights regarding your personal information:</p>
-      <ul>
-        <li>Right to access and obtain a copy of your personal information</li>
-        <li>Right to request correction or deletion of your personal information</li>
-        <li>Right to restrict or object to the processing of your personal information</li>
-        <li>Right to data portability</li>
-        <li>Right to withdraw consent at any time</li>
-      </ul>
-      <p>To exercise any of these rights, please email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>. We will respond to your request in accordance with applicable data protection laws.</p>
+      <h2><span class="sec-num">09</span> Do We Collect Information From Minors?</h2>
+      <p><em><strong>In Short:</strong> We do not knowingly collect data from or market to children under 18 years of age.</em></p>
+      <p>We do not knowingly collect, solicit data from, or market to children under 18 years of age, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 years old. If we learn that personal information from users under 18 has been collected, we will deactivate the account and promptly delete such data.</p>
+      <p>If you believe we may have collected information from a minor, please contact us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>.</p>
     </div>
 
     <div class="section" id="s10">
-      <h2><span class="sec-num">10</span> Controls for Do-Not-Track Features</h2>
-      <p>Most web browsers include a Do-Not-Track ("DNT") feature you can activate to signal your privacy preference not to have your browsing activities tracked. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized, and we do not currently respond to DNT signals.</p>
-      <p>California law requires us to disclose how we respond to DNT signals. Because there is currently no industry standard for recognizing or honoring DNT signals, we do not respond to them at this time.</p>
+      <h2><span class="sec-num">10</span> What Are Your Privacy Rights?</h2>
+      <p><em><strong>In Short:</strong> Depending on your state of residence in the US or in some regions such as Canada, you have rights that allow you greater access to and control over your personal information.</em></p>
+      <p>In some regions, you have rights including the right to request access and obtain a copy of your personal information, to request rectification or erasure, to restrict processing, to data portability, and to object to processing. Contact us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a> to make a request.</p>
+      <h3>Withdrawing your consent</h3>
+      <p>If we are relying on your consent to process your personal information, you have the right to withdraw your consent at any time by contacting us. This will not affect the lawfulness of processing before its withdrawal.</p>
+      <h3>Account information</h3>
+      <p>If you would like to review or change information in your account or terminate your account, please contact us. Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. We may retain some information in our files to prevent fraud, troubleshoot problems, enforce our legal terms, or comply with applicable legal requirements.</p>
+      <p>If you have questions about your privacy rights, email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>.</p>
     </div>
 
     <div class="section" id="s11">
-      <h2><span class="sec-num">11</span> Do United States Residents Have Specific Privacy Rights?</h2>
-      <p>If you are a resident of California, Colorado, Connecticut, Virginia, or other US states with applicable privacy laws, you may have additional rights including the right to:</p>
-      <ul>
-        <li>Know whether we are processing your personal data</li>
-        <li>Access your personal data</li>
-        <li>Correct inaccuracies in your personal data</li>
-        <li>Request deletion of your personal data</li>
-        <li>Opt out of the sale or sharing of personal data (we do not sell personal data)</li>
-        <li>Non-discrimination for exercising your privacy rights</li>
-      </ul>
-      <p>To exercise these rights, email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>. We will verify your identity and respond in accordance with applicable law. If we decline your request, you may appeal by emailing us and we will provide a written explanation.</p>
-      <div class="callout">
-        <strong>California "Shine The Light" Law:</strong> California residents may request information about personal information disclosed to third parties for direct marketing purposes once per year, free of charge. Contact us at the email below to make such a request.
-      </div>
+      <h2><span class="sec-num">11</span> Controls for Do-Not-Track Features</h2>
+      <p>Most web browsers include a Do-Not-Track ("DNT") feature. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized, and we do not currently respond to DNT signals. California law requires us to disclose this. If a standard is adopted in the future, we will inform you in a revised version of this notice.</p>
     </div>
 
     <div class="section" id="s12">
-      <h2><span class="sec-num">12</span> Do We Make Updates to This Notice?</h2>
-      <p>Yes, we may update this Privacy Notice from time to time to reflect changes in our practices or applicable laws. The updated version will be indicated by an updated "Last updated" date at the top of this page. We encourage you to review this notice periodically.</p>
+      <h2><span class="sec-num">12</span> Do United States Residents Have Specific Privacy Rights?</h2>
+      <p><em><strong>In Short:</strong> If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Maryland, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Rhode Island, Tennessee, Texas, Utah, or Virginia, you may have additional privacy rights.</em></p>
+
+      <h3>Categories of personal information we collect</h3>
+      <table class="data-table">
+        <thead><tr><th>Category</th><th>Examples</th><th>Collected</th></tr></thead>
+        <tbody>
+          <tr><td>A. Identifiers</td><td>Email address, account name, unique personal identifier</td><td class="no">NO</td></tr>
+          <tr><td>B. California Customer Records</td><td>Name, contact information, financial information</td><td class="no">NO</td></tr>
+          <tr><td>C. Protected classification characteristics</td><td>Gender, age, race, ethnicity, marital status</td><td class="no">NO</td></tr>
+          <tr><td>D. Commercial information</td><td>Transaction information, purchase history, payment information</td><td class="no">NO</td></tr>
+          <tr><td>E. Biometric information</td><td>Fingerprints and voiceprints</td><td class="no">NO</td></tr>
+          <tr><td>F. Internet or network activity</td><td>Browsing history, search history, online behavior</td><td class="no">NO</td></tr>
+          <tr><td>G. Geolocation data</td><td>Device location</td><td class="no">NO</td></tr>
+          <tr><td>H. Audio, electronic, or similar information</td><td>Images, audio, video or call recordings</td><td class="no">NO</td></tr>
+          <tr><td>I. Professional or employment-related information</td><td>Business contact details, job title, work history</td><td class="no">NO</td></tr>
+          <tr><td>J. Education information</td><td>Student records and directory information</td><td class="no">NO</td></tr>
+          <tr><td>K. Inferences from collected information</td><td>Profiles about preferences and characteristics</td><td class="no">NO</td></tr>
+          <tr><td>L. Sensitive personal information</td><td></td><td class="no">NO</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Your rights</h3>
+      <ul>
+        <li>Right to know whether or not we are processing your personal data</li>
+        <li>Right to access your personal data</li>
+        <li>Right to correct inaccuracies in your personal data</li>
+        <li>Right to request the deletion of your personal data</li>
+        <li>Right to obtain a copy of the personal data you previously shared with us</li>
+        <li>Right to non-discrimination for exercising your rights</li>
+        <li>Right to opt out of the processing of your personal data if used for targeted advertising, the sale of personal data, or profiling</li>
+      </ul>
+
+      <h3>How to exercise your rights</h3>
+      <p>Email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>. We will verify your identity and respond in accordance with applicable law. If we decline your request, you may appeal by emailing us and we will provide a written explanation. If your appeal is denied, you may submit a complaint to your state attorney general.</p>
+
+      <div class="callout"><strong>California "Shine The Light" Law:</strong> California residents may request information about personal information disclosed to third parties for direct marketing purposes once per year, free of charge. Contact us at the email above to make such a request.</div>
     </div>
 
     <div class="section" id="s13">
-      <h2><span class="sec-num">13</span> How Can You Contact Us?</h2>
-      <p>If you have questions or comments about this notice or wish to exercise your privacy rights, please contact us:</p>
+      <h2><span class="sec-num">13</span> Do We Make Updates to This Notice?</h2>
+      <p><em><strong>In Short:</strong> Yes, we will update this notice as necessary to stay compliant with relevant laws.</em></p>
+      <p>We may update this Privacy Notice from time to time. The updated version will be indicated by an updated "Last updated" date at the top of this page. If we make material changes, we may notify you by prominently posting a notice or by directly sending you a notification. We encourage you to review this Privacy Notice frequently.</p>
+    </div>
+
+    <div class="section" id="s14">
+      <h2><span class="sec-num">14</span> How Can You Contact Us?</h2>
+      <p>If you have questions or comments about this notice, please contact us:</p>
       <div class="contact-box">
         <p><strong>Card Notes Pro</strong></p>
         <p>1000 Conestoga Rd, Apt A319</p>
@@ -414,6 +267,12 @@
       </div>
     </div>
 
+    <div class="section" id="s15">
+      <h2><span class="sec-num">15</span> How Can You Review, Update, or Delete Your Data?</h2>
+      <p>Based on the applicable laws of your country or state of residence, you may have the right to request access to the personal information we collect from you, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information.</p>
+      <p>To request to review, update, or delete your personal information, please email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a>.</p>
+    </div>
+
   </main>
 </div>
 
@@ -421,6 +280,7 @@
   © 2026 Card Notes Pro &nbsp;·&nbsp;
   <a href="index.html">Home</a> &nbsp;·&nbsp;
   <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp;
   <a href="mailto:michaelmessina37@gmail.com">Contact</a>
 </footer>
 
