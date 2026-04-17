@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliates — Card Notes Pro</title>
+  <meta name="description" content="Earn 75% revenue share on every Card Notes Pro subscription you refer. Paid on every annual renewal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #060d1c; --navy2: #0b1628; --navy3: #0f1e35;
+      --border: #1a2d4a; --blue: #60aaff; --blue2: #90c8ff;
+      --blue-dim: rgba(96,170,255,0.12);
+      --text: #e8f2ff; --text-dim: #7a9ab8; --text-muted: #3a5878;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(6,13,28,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(26,45,74,0.5); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta { background: var(--blue); color: var(--navy) !important; padding: 8px 20px; border-radius: 8px; font-weight: 600 !important; font-size: 14px; text-decoration: none; transition: background 0.15s !important; }
+    .nav-cta:hover { background: var(--blue2) !important; }
+
+    /* Hero */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(96,170,255,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 60%, rgba(96,170,255,0.06) 0%, transparent 60%);
+    }
+
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-dim); border: 1px solid rgba(96,170,255,0.25); border-radius: 20px; padding: 5px 16px; font-size: 12px; font-family: 'DM Mono', monospace; color: var(--blue); letter-spacing: 0.04em; margin-bottom: 28px; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; box-shadow: 0 0 8px var(--blue); }
+
+    h1 { font-family: 'Syne', sans-serif; font-size: clamp(40px, 6vw, 70px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--text); max-width: 800px; margin-bottom: 20px; }
+    h1 .accent { color: var(--blue); }
+
+    .hero-sub { font-size: 18px; color: var(--text-dim); max-width: 500px; margin-bottom: 40px; line-height: 1.6; }
+
+    .btn-primary { background: var(--blue); color: var(--navy); padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 17px; text-decoration: none; display: inline-block; transition: background 0.15s, transform 0.1s, box-shadow 0.15s; box-shadow: 0 4px 24px rgba(96,170,255,0.35); }
+    .btn-primary:hover { background: var(--blue2); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(96,170,255,0.45); }
+
+    /* Payout highlight */
+    .payout-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+    .payout-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 14px; padding: 24px 32px; text-align: center; min-width: 160px; }
+    .payout-val { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; color: var(--blue); letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px; }
+    .payout-lbl { font-size: 13px; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+
+    /* Section */
+    section { max-width: 1000px; margin: 0 auto; padding: 80px 48px; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+    h2 { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 14px; }
+    .section-sub { font-size: 16px; color: var(--text-dim); max-width: 500px; line-height: 1.6; margin-bottom: 48px; }
+
+    /* How it works steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step-card { background: var(--navy2); border: 1px solid var(--border); border-radius: 14px; padding: 32px 28px; position: relative; overflow: hidden; }
+    .step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--blue), transparent); }
+    .step-num { font-family: 'Syne', sans-serif; font-size: 56px; font-weight: 800; color: rgba(96,170,255,0.08); line-height: 1; margin-bottom: 14px; letter-spacing: -0.04em; }
+    .step-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .step-body { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+    /* Math section */
+    .math-box { background: var(--navy2); border: 1px solid var(--border); border-radius: 16px; padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .math-side { }
+    .math-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 20px; }
+    .math-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .math-row:last-child { border-bottom: none; }
+    .math-label { color: var(--text-dim); }
+    .math-val { color: var(--text); font-weight: 600; font-family: 'DM Mono', monospace; }
+    .math-val.highlight { color: var(--blue); font-size: 18px; }
+    .math-cta { text-align: center; }
+    .math-cta-big { font-family: 'Syne', sans-serif; font-size: 64px; font-weight: 800; color: var(--blue); letter-spacing: -0.04em; line-height: 1; margin-bottom: 8px; }
+    .math-cta-label { font-size: 14px; color: var(--text-dim); margin-bottom: 24px; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--navy2); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; }
+    .faq-q { font-weight: 600; font-size: 15px; color: var(--text); margin-bottom: 8px; }
+    .faq-a { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+    .faq-a a { color: var(--blue); text-decoration: none; }
+
+    /* CTA strip */
+    .cta-strip { background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 48px; text-align: center; background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(96,170,255,0.1) 0%, transparent 70%), var(--navy2); }
+    .cta-strip h2 { margin-bottom: 14px; }
+    .cta-strip p { color: var(--text-dim); font-size: 16px; margin-bottom: 36px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--text-muted); }
+    .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; color: var(--text-dim); text-decoration: none; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      section { padding: 56px 20px; }
+      .steps { grid-template-columns: 1fr; }
+      .math-box { grid-template-columns: 1fr; }
+      .payout-row { gap: 10px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .cta-strip { padding: 56px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Card Notes <span>Pro</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="affiliates.html" class="active">Affiliates</a></li>
+    <li><a href="https://whop.com/card-notes-pro/" target="_blank" class="nav-cta">Get Started — $4/yr</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Affiliate Program</div>
+  <h1>Earn <span class="accent">75%</span> on Every<br>Referral You Send</h1>
+  <p class="hero-sub">Share Card Notes Pro with your audience. Get paid 75% of every subscription — on every annual renewal, not just the first.</p>
+  <a href="https://whop.com/card-notes-pro/affiliates" target="_blank" class="btn-primary">Join the Program on Whop →</a>
+
+  <div class="payout-row">
+    <div class="payout-card">
+      <div class="payout-val">75%</div>
+      <div class="payout-lbl">Revenue share</div>
+    </div>
+    <div class="payout-card">
+      <div class="payout-val">$3</div>
+      <div class="payout-lbl">Per referral / year</div>
+    </div>
+    <div class="payout-card">
+      <div class="payout-val">∞</div>
+      <div class="payout-lbl">No referral limit</div>
+    </div>
+    <div class="payout-card">
+      <div class="payout-val">Auto</div>
+      <div class="payout-lbl">Paid every renewal</div>
+    </div>
+  </div>
+</div>
+
+<!-- How it works -->
+<section>
+  <div class="section-label">How it works</div>
+  <h2>Simple. Transparent.<br>Recurring.</h2>
+  <p class="section-sub">Three steps to start earning from the collector community you're already part of.</p>
+
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Sign up on Whop</div>
+      <div class="step-body">Click the button below to join the affiliate program. Whop gives you a unique referral link instantly — no approval process, no waiting.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Share your link</div>
+      <div class="step-body">Post it in your YouTube videos, Discord server, Reddit posts, or anywhere card collectors hang out. The tool sells itself — it's $4 a year.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Get paid every year</div>
+      <div class="step-body">You earn 75% of every subscription your referrals pay — including every annual renewal. As long as they stay subscribed, you keep earning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Math section -->
+<section style="padding-top: 0;">
+  <div class="math-box">
+    <div class="math-side">
+      <div class="math-title">The math is simple</div>
+      <div class="math-row">
+        <span class="math-label">Annual subscription price</span>
+        <span class="math-val">$4.00</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Your revenue share</span>
+        <span class="math-val">75%</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">You earn per subscriber</span>
+        <span class="math-val highlight">~$3 / year</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Payment timing</span>
+        <span class="math-val">Every renewal</span>
+      </div>
+      <div class="math-row">
+        <span class="math-label">Payment method</span>
+        <span class="math-val">Whop (direct)</span>
+      </div>
+    </div>
+    <div class="math-cta">
+      <div class="math-cta-big">100</div>
+      <div class="math-cta-label">referrals = ~$300/yr in passive income</div>
+      <a href="https://whop.com/card-notes-pro/affiliates" target="_blank" class="btn-primary" style="font-size:15px;padding:13px 28px;">Sign up on Whop →</a>
+      <div style="margin-top:14px;font-size:12px;color:var(--text-muted);font-family:'DM Mono',monospace;">Free to join · No minimum payout</div>
+    </div>
+  </div>
+</section>
+
+<!-- Who it's for -->
+<section style="background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:72px 48px;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div class="section-label">Who it's for</div>
+    <h2>Built for the<br>Collector Community</h2>
+    <p class="section-sub">If you create content for card collectors, this is a natural fit.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:0;">
+      <div style="background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">🎥</div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:15px;">YouTubers</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.5;">Drop your link in the description of any eBay rip, collection, or buying guide video.</div>
+      </div>
+      <div style="background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">💬</div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:15px;">Discord mods</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.5;">Pin it in your resources channel. Collectors in your server are already hunting eBay daily.</div>
+      </div>
+      <div style="background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">📱</div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:15px;">Reddit &amp; forums</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.5;">Post in r/sportscards, r/basketballcards, and collector forums where your referral link is welcome.</div>
+      </div>
+      <div style="background:var(--navy3);border:1px solid var(--border);border-radius:12px;padding:24px;">
+        <div style="font-size:28px;margin-bottom:12px;">✉️</div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:6px;font-size:15px;">Newsletters</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.5;">A single mention in a collector newsletter can drive dozens of sign-ups from a highly targeted audience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-label">FAQ</div>
+  <h2>Common Questions</h2>
+  <p class="section-sub">Everything you need to know before signing up.</p>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">How does Whop pay me?</div>
+      <div class="faq-a">Whop pays out directly to your bank account or PayPal. You set up your payout method when you create your affiliate account. Payments process automatically on every renewal.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I earn on renewals or just the first purchase?</div>
+      <div class="faq-a">Both. You earn 75% every time your referral renews their annual subscription — not just the first year. As long as they stay subscribed, you keep getting paid.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a minimum payout threshold?</div>
+      <div class="faq-a">Whop handles all payout logistics. Check your Whop affiliate dashboard for current payout thresholds and schedules — these are set by the platform, not by us.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I track my referrals?</div>
+      <div class="faq-a">Your Whop affiliate dashboard shows clicks, conversions, earnings, and renewal history in real time. You always know exactly how your links are performing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I promote this without being a card collector myself?</div>
+      <div class="faq-a">Yes, but it converts best when shared with actual collectors. The tool is built for people who buy cards on eBay regularly — they immediately understand why it's useful.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Questions not answered here?</div>
+      <div class="faq-a">Email us at <a href="mailto:michaelmessina37@gmail.com">michaelmessina37@gmail.com</a> and we'll get back to you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA strip -->
+<div class="cta-strip">
+  <div class="section-label" style="text-align:center;">Ready to earn?</div>
+  <h2>Start Earning Today</h2>
+  <p>Sign up takes under two minutes. Your link is ready instantly.</p>
+  <a href="https://whop.com/card-notes-pro/affiliates" target="_blank" class="btn-primary">Join on Whop — It's Free →</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <a href="index.html" class="footer-logo">Card Notes Pro</a>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="affiliates.html">Affiliates</a>
+    <a href="mailto:michaelmessina37@gmail.com">Support</a>
+  </div>
+  <div>© 2026 Card Notes Pro. For eBay collectors.</div>
+</footer>
+
+</body>
+</html>
