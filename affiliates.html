@@ -180,7 +180,7 @@
         <div style="font-size:24px;margin-bottom:12px;">🔗</div>
         <div style="font-weight:700;color:var(--text);font-size:16px;margin-bottom:8px;">How you get credit</div>
         <div style="font-size:14px;color:var(--text-dim);line-height:1.7;">
-          When you join the affiliate program on Whop, you get a unique affiliate code — something like <code style="background:#0a1525;padding:2px 6px;border-radius:4px;font-size:12px;">mikemcool</code>. Share your link as <code style="background:#0a1525;padding:2px 6px;border-radius:4px;font-size:12px;">cardnotespro.com/?a=yourcode</code>. Our site stores your code for 30 days — if the visitor subscribes any time within that window, Whop credits you automatically.
+          We set up a unique coupon code for each affiliate — something like <code style="background:#0a1525;padding:2px 6px;border-radius:4px;font-size:12px;">MIKE50</code>. Share it with your audience. When they enter it at checkout on Whop, the sale is credited to you automatically and they get the discounted rate. Contact us at cardnotespro@gmail.com to get your personal coupon code set up.
         </div>
       </div>
 
@@ -311,9 +311,11 @@
 </footer>
 
 
+
 <script>
 (function() {
   var WHOP_BASE = 'https://whop.com/card-notes-pro/';
+
   function getAffiliateCode() {
     var params = new URLSearchParams(window.location.search);
     var a = params.get('a');
@@ -322,16 +324,22 @@
       document.cookie = 'cnp_a=' + encodeURIComponent(a) + '; expires=' + expires + '; path=/; SameSite=Lax';
       return a;
     }
-    var match = document.cookie.match(/(?:^|;\s*)cnp_a=([^;]+)/);
-    return match ? decodeURIComponent(match[1]) : null;
+    var match = document.cookie.match(/(^|;)\s*cnp_a=([^;]+)/);
+    return match ? decodeURIComponent(match[2]) : null;
   }
-  var code = getAffiliateCode();
-  if (code) {
-    var url = WHOP_BASE + '?a=' + encodeURIComponent(code);
-    document.querySelectorAll('a[href*="whop.com/card-notes-pro/card-notes-pro"]').forEach(function(el) {
-      el.href = url;
+
+  function applyAffiliate(code) {
+    // Target every link pointing to whop.com/card-notes-pro
+    document.querySelectorAll('a[href*="whop.com/card-notes-pro"]').forEach(function(el) {
+      // Don't touch the affiliates signup page link
+      if (el.href.includes('/affiliates')) return;
+      var base = el.href.split('?')[0];
+      el.href = base + '?a=' + encodeURIComponent(code);
     });
   }
+
+  var code = getAffiliateCode();
+  if (code) applyAffiliate(code);
 })();
 </script>
 </body>
